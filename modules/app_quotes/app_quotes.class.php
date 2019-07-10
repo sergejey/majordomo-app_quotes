@@ -183,7 +183,9 @@ function usual(&$out) {
    if ($res['ID']) {
     $session->data['SEEN_QUOTES'].=','.$res['ID'];
    }
-   $session->save();
+   if (method_exists($session,'save')) {
+    $session->save();
+   }
 
  if ($res['ID']) {
   $out['BODY']=$res['BODY']; //.' '.$session->data['SEEN_QUOTES']
